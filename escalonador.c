@@ -9,8 +9,8 @@
 #define tempo_imp 20  
 #define min_cpu 5
 #define max_cpu 20
-#define alta 2
-#define baixa 2
+#define alta 0
+#define baixa 1
 
 typedef enum {PRONTO, EXECUTANDO, BLOQUEADO, TERMINADO} Status;
 
