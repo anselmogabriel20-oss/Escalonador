@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define max_processos 5
+#define quantum 4
+#define tempo_disco 4
+#define tempo_fita 12
+#define tempo_imp 20  
+#define min_cpu 5
+#define max_cpu 20
+#define alta 2
+#define baixa 2
+
+typedef enum {PRONTO, EXECUTANDO, BLOQUEADO, TERMINADO} Status;
+
+typedef enum {DISCO = 0, FITA = 1, IMPRESSORA = 2} TipoIO;
+
+typedef struct {
+    int pid;
+    int prioridade;
+    int ppid;
+    Status status;
+
+    int tempo_serv;
+    int tempo_exec;
+
+    int tem_io;
+    int instante_io;
+    TipoIO tipo_io;
+    int io_feito;
+    int temporest_io;    
+} PCB;
+
+typedef struct No {
+    PCB *processo;
+    struct No *prox;
+} No;
+
+typedef struct {
+    No *inicio;
+    No *fim;
+} Fila;
+
+
