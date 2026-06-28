@@ -1,23 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "fila.h"
-
-#define max_processos 5
-#define quantum 4
-#define tempo_disco 4
-#define tempo_fita 12
-#define tempo_imp 20  
-#define min_cpu 5
-#define max_cpu 20
-#define alta 0
-#define baixa 1
+#ifndef FILA_H
+#define FILA_H
 
 
 typedef enum {PRONTO, EXECUTANDO, BLOQUEADO, TERMINADO} Status;
 
 typedef enum {DISCO = 0, FITA = 1, IMPRESSORA = 2} TipoIO;
 
+/* PCB guarda o contexto de cada processo. */
 typedef struct {
     int pid;
     int prioridade;
@@ -31,8 +20,9 @@ typedef struct {
     int instante_io;
     TipoIO tipo_io;
     int io_feito;
-    int temporest_io;    
+    int temporest_io;
 } PCB;
+
 
 typedef struct No {
     PCB *processo;
@@ -45,3 +35,20 @@ typedef struct {
 } Fila;
 
 
+Fila *criar_fila(void);
+
+int fila_vazia(Fila *fila);
+
+
+void enfileira(Fila *fila, PCB *processo);
+
+
+PCB *desenfileira(Fila *fila);
+
+
+PCB *consultar_primeiro(Fila *fila);
+
+
+void destruir_fila(Fila *fila);
+
+#endif
