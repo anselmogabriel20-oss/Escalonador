@@ -41,7 +41,4 @@ typedef struct No {
 
 typedef struct {
     No *inicio;
-    No *fim;
-} Fila;
-
-
+    
