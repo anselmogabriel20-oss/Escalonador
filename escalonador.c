@@ -14,10 +14,6 @@
 #define baixa 1
 
 
-typedef enum {PRONTO, EXECUTANDO, BLOQUEADO, TERMINADO} Status;
-
-typedef enum {DISCO = 0, FITA = 1, IMPRESSORA = 2} TipoIO;
-
 typedef struct {
     int pid;
     int prioridade;
@@ -41,4 +37,7 @@ typedef struct No {
 
 typedef struct {
     No *inicio;
-    
+    No *fim;
+} Fila;
+
+
